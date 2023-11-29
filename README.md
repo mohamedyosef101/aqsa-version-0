@@ -1,18 +1,14 @@
 # AQSA: Conversational AI for Startups
 AQSA is large language model developed in top of PaLM with a goal to help startups grow and put their foot on the business land.
 
-<img src="" alt="" width="720">
+<img src="https://github.com/mohamedyosef101/aqsa-version-0/assets/118842452/82eb7991-0f6f-4cad-82be-330b776a94de" alt="AQSA. There is a way to reach any dream" width="720">
 
 <hr>
 <div><br></div>
 
-# **Methods** *SOON*
-High level description of the techniques and models used.
-
-<div><br></div>
-
-# **Results**
+# **Findings**
 * We can say that PaLM api is a great tool but we still struggling to add the Arabic language to the model.
+* For now, we need to focus on what we want the model to do and that's what we're going to do in version-1 inshaallah.
 
 <div><br></div>
 
