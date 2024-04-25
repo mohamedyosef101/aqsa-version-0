@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit_chat import message
 import google.generativeai as palm
 import config # to get the api key
+from transformers import pipeline
 
 
 # start with the api
@@ -29,7 +30,7 @@ st.markdown("""<div style="position:relative; margin: auto; text-align: center;"
 
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "أهلاً بك! This is AQSA version-0. How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "أهلا بك! ازاي أقدر أساعدك"}]
 
 with st.form("chat_input", clear_on_submit=True):
     a, b = st.columns([4, 1])
@@ -39,6 +40,10 @@ with st.form("chat_input", clear_on_submit=True):
         placeholder="Type something...",
         label_visibility="collapsed",
     )
+
+    ar_en = pipeline("translation", model="Helsinki-NLP/opus-mt-ar-en")
+
+    user_prompt = ar_en(user_prompt)
 
     b.form_submit_button("Send", use_container_width=True)
 
@@ -59,4 +64,8 @@ if user_prompt and palm_api_key:
 
     st.session_state.messages.append(msg)  # add message to the chat history
 
-    message(msg["content"])  # display message on the screen
+    res = msg["content"]
+    en_ar = pipeline("translation", model="Helsinki-NLP/opus-mt-en-ar")
+    res = en_ar(res)
+
+    message(res)  # display message on the screen
